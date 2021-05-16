@@ -1,0 +1,69 @@
+>>> db.create_all()
+>>> from flask_blog import User, Post
+>>> user_1 = User(username="RA", email="rrka79wal@gmail.com", password="password")
+>>> db.session.add(user_1)
+>>> user_2 = User(username="RA2", email="rrka79wali@gmail.com", password="password2")
+>>> db.session.add(user_2)
+>>> db.session.commit()
+>>> User.query.all()
+[User(1, 'RA', 'rrka79wal@gmail.com', 'default.jpg'), User(2, 'RA2', 'rrka79wali@gmail.com', 'default.jpg')]
+>>> User.query.first()
+User(1, 'RA', 'rrka79wal@gmail.com', 'default.jpg')
+>>> User.query.filter_by(username='RA').all()
+[User(1, 'RA', 'rrka79wal@gmail.com', 'default.jpg')]
+>>> User.query.filter_by(username='RA').first()
+User(1, 'RA', 'rrka79wal@gmail.com', 'default.jpg')
+>>> user = User.query.filter_by(username='RA').first()
+>>> user
+User(1, 'RA', 'rrka79wal@gmail.com', 'default.jpg')
+>>> user.id
+1
+>>> user = User.query.get(2)
+>>> user
+User(2, 'RA2', 'rrka79wali@gmail.com', 'default.jpg')
+>>> user.posts
+[]
+>>> post1 = Post(title='Title1', content='content 1', author=user.id)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<string>", line 4, in __init__
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\state.py", line 445, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\util\compat.py", line 211, in raise_
+    raise exception
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\state.py", line 442, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\decl_base.py", line 1145, in _declarative_constructor
+    setattr(self, k, kwargs[k])
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\attributes.py", line 458, in __set__
+    self.impl.set(
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\attributes.py", line 1226, in set
+    value = self.fire_replace_event(state, dict_, value, old, initiator)
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\attributes.py", line 1248, in fire_replace_event
+    value = fn(
+  File "E:\PythonProjects\venv\lib\site-packages\sqlalchemy\orm\attributes.py", line 1677, in emit_backref_from_scalar_set_event
+    instance_state(child),
+AttributeError: 'int' object has no attribute '_sa_instance_state'
+>>> user.id
+2
+>>> post1 = Post(title='Title1', content='content 1', user_id=user.id)
+>>> post2 = Post(title='Title2', content='content 2', user_id=user.id)
+>>> db.session.add(post1)
+>>> db.session.add(post2)
+>>> db.session.commit()
+>>> user.posts
+[Post(1, 'Title1', 2021-05-16 13:10:49.587769), Post(2, 'Title2', 2021-05-16 13:10:49.587769)]
+>>> post = Post.query.first()
+>>> post.user_id
+2
+>>> post.author
+User(2, 'RA2', 'rrka79wali@gmail.com', 'default.jpg')
+>>> db.drop_all()
+>>> db.create_all()
+>>> User.query.all()
+[]
+>>> Post.query.all()
+[]
+>>> ^Z

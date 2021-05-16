@@ -1,0 +1,20 @@
+pip install flask
+pip install flask-wtf
+pip install email_validator
+pip install flask-sqlalchemy
+pip install flask-bcrypt
+pip install flask-login
+pip install Pillow
+
+running without main():
+        set FLASK_APP=flask_blog.py             #replace set with export in mac/linux
+        set FLASK_DEBUG=1                       #replace set with export in mac/linux
+        flask run
+
+
+running with main():
+        python flask_blog.py
+
+generating secret key: (in python shell)
+    import secrets
+    secrets.token_hex(16)
