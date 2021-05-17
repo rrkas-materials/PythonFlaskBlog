@@ -4,5 +4,5 @@ class Config:
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = '<MAIL ID HERE>'  # TODO: change to your email
-    MAIL_PASSWORD = '<PASSWORD HERE>'  # TODO: change to your password
+    MAIL_USERNAME = 'flaskblog.rrkas@gmail.com'  # TODO: change to your email
+    MAIL_PASSWORD = 'BLOGrrkasFLASK!'  # TODO: change to your password
