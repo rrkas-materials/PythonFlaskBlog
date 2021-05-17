@@ -5,6 +5,7 @@ pip install flask-sqlalchemy
 pip install flask-bcrypt
 pip install flask-login
 pip install Pillow
+pip install flask-mail
 
 running without main():
         set FLASK_APP=flask_blog.py             #replace set with export in mac/linux
