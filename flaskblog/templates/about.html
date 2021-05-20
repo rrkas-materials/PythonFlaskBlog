@@ -1,4 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>About Page</h1>
-{% endblock content %}
+<h1 class="title-underline">About This App</h1>
+<p class="pt-2">
+    This app is a project for practice.<br>
+    This app aims at converting images to a PDF.
+</p>
+<h3>Technical Details</h3>
+<ol>
+    <li>
+        Languages:
+        <ul type="disc">
+            <li>Python</li>
+            <li>HTML</li>
+            <li>CSS</li>
+        </ul>
+    </li>
+    <li>
+        Framework: Flask
+    </li>
+    <li>
+        Python libraries:
+        <ul type="disc">
+            <li>Flask</li>
+            <li>Flask-WTF</li>
+            <li>Pillow</li>
+        </ul>
+    </li>
+    <li>
+        Features:
+        <ul type="disc">
+            <li>Posts Creation, Update, Delete</li>
+            <li>Users Register and Login</li>
+        </ul>
+    </li>
+</ol>
+{% endblock %}
