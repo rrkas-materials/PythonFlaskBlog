@@ -1,3 +1,3 @@
 # FLASK BLOG
 
-[endpoint](https://rrka3flaskblog.herokuapp.com/)
+[Endpoint](https://rrka3flaskblog.herokuapp.com/)
